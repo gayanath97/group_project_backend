@@ -3,6 +3,7 @@ package com.ems.entity;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -44,6 +45,20 @@ public class Employee {
 
     private Collection<Role> roles;
 
+    @OneToMany(mappedBy = "employee")
+    private Set<Rr> rrs;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Expense> expenses;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Opd> opds;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<Reward> rewards;
+
+    @OneToMany(mappedBy = "employee")
+    private Set<OpdAmount> opdAmounts;
 
     //    @Enumerated
 //    private CommonStatus status;
@@ -82,7 +97,6 @@ public class Employee {
         this.phoneNumber = phoneNumber;
 
     }
-
 
 
 
@@ -149,6 +163,14 @@ public class Employee {
 //    public void setType(String type) {
 //        this.type = type;
 //    }
+
+    public Set<Rr> getRrs() {
+        return rrs;
+    }
+
+    public void setRrs(Set<Rr> rrs) {
+        this.rrs = rrs;
+    }
 
     public Collection<Role> getRoles() {
         return roles;

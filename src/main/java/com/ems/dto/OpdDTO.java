@@ -21,6 +21,8 @@ public class OpdDTO {
     private String date;
     private String sta_tus;
 
+    private String employee;
+
     //private String employee;
 
 //    private Set<OpdBillDTO> opdBills;

@@ -1,9 +1,5 @@
 package com.ems.entity;
-
 import com.ems.constant.ERole;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity

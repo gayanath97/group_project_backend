@@ -17,7 +17,7 @@ public class OpdAmountDTO {
     private String expireDate;
     private String employee;
 
-    private CommonStatus statuss;
+    //private CommonStatus statuss;
 
 
 }

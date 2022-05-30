@@ -59,13 +59,15 @@ public class RrService {
 
             Rr rr = new Rr();
 
-        //    rr.setId(Long.valueOf(rrDTO.getId()));
+         //   rr.setId(Long.valueOf(rrDTO.getId()));
             rr.setExtensionNo(Integer.valueOf(rrDTO.getExtensionNo()));
             rr.setCustomer(rrDTO.getCustomer());
             rr.setLocation(rrDTO.getLocation());
         //    rr.setSta_tus(rrDTO.getSta_tus());
 
             rr.setSta_tus("Pending");
+
+            rr.setEmployee(employeeService.findById(rrDTO.getEmployee()));
 
 
 
@@ -76,6 +78,7 @@ public class RrService {
 
             rrRepository.save(rr);
             commonResponse.setStatus(true);
+          //  commonResponse.setPayload(Collections.singletonList(rr));
 
         }catch (Exception e){
             LOGGER.error("/**************** Exception in RrService -> saveRr()" + e);
@@ -106,6 +109,8 @@ public class RrService {
             rr.setLocation(rrDTO.getLocation());
           //  rr.setSta_tus(rrDTO.getSta_tus());
             rr.setSta_tus("Pending");
+
+            rr.setEmployee(employeeService.findById(rrDTO.getEmployee()));
 
 
 
@@ -167,7 +172,6 @@ public class RrService {
         try {
 
             List<Rr> rrs = rrRepository.findAll();
-
             rrDTOS = castRrListIntoRrDTOList(rrs);
             commonResponse.setPayload(Collections.singletonList(rrDTOS));
             commonResponse.setStatus(true);
@@ -191,14 +195,16 @@ public class RrService {
         List<RrDTO> rrDTOList = new ArrayList<>();
 
         for (Rr rr : rrs) {
-            RrDTO rrDTO;
-            rrDTO = modelMapper.map(rr,RrDTO.class);
+
+            RrDTO rrDTO = new RrDTO();
+           // rrDTO = modelMapper.map(rr,RrDTO.class);
 
             rrDTO.setId(String.valueOf(rr.getId()));
             rrDTO.setCustomer(rr.getCustomer());
             rrDTO.setExtensionNo(String.valueOf(rr.getExtensionNo()));
             rrDTO.setLocation(rr.getLocation());
             rrDTO.setSta_tus("Pending");
+            rrDTO.setEmployee(String.valueOf(rr.getEmployee().getId()));
 
 
 
@@ -245,13 +251,23 @@ public class RrService {
 
         CommonResponse commonResponse =new CommonResponse();
 
-        RrDTO rrDTO =null;
+       // RrDTO rrDTO =null;
 
 
         try {
 
             Rr rr = rrRepository.findById(Long.valueOf(id)).get();
-            rrDTO = modelMapper.map(rr,RrDTO.class);
+           // rrDTO = modelMapper.map(rr,RrDTO.class);
+
+            RrDTO rrDTO = new RrDTO();
+
+            rrDTO.setId(String.valueOf(rr.getId()));
+            rrDTO.setCustomer(rr.getCustomer());
+            rrDTO.setExtensionNo(String.valueOf(rr.getExtensionNo()));
+            rrDTO.setLocation(rr.getLocation());
+            rrDTO.setSta_tus("Pending");
+            rrDTO.setEmployee(String.valueOf(rr.getEmployee().getId()));
+
 
             commonResponse.setPayload(Collections.singletonList(rrDTO));
             commonResponse.setStatus(true);

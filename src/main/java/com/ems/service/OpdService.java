@@ -67,6 +67,8 @@ public class OpdService {
             opd.setParticulars(opdDTO.getParticulars());
             opd.setSta_tus("pending");
 
+            opd.setEmployee(employeeService.findById(opdDTO.getEmployee()));
+
 //            opd.setOpdBills(opdBillService.opdBillDTOSIntoOpds(opdDTO.getOpdBills()));
           //  opd.setEmployeeOpds(employeeOpdService.castToEmployeeOpds(opdDTO.getEmployeeOpds()));
 
@@ -102,6 +104,8 @@ public class OpdService {
             opd.setAmount(Double.valueOf(opdDTO.getAmount()));
             opd.setParticulars(opdDTO.getParticulars());
             opd.setSta_tus("pending");
+
+            opd.setEmployee(employeeService.findById(opdDTO.getEmployee()));
 
 //            opd.setOpdBills(opdBillService.opdBillDTOSIntoOpds(opdDTO.getOpdBills()));
 //            opd.setEmployeeOpds(employeeOpdService.castToEmployeeOpds(opdDTO.getEmployeeOpds()));
@@ -195,6 +199,8 @@ public class OpdService {
             opdDTO.setParticulars(opd.getParticulars());
             opdDTO.setSta_tus("pending");
 
+            opdDTO.setEmployee(String.valueOf(opd.getEmployee().getId()));
+
             opdDTOS.add(opdDTO);
         }
        return  opdDTOS;
@@ -245,6 +251,8 @@ public class OpdService {
             opdDTO.setAmount(String.valueOf(opd.getAmount()));
             opdDTO.setParticulars(opd.getParticulars());
             opdDTO.setSta_tus("pending");
+
+            opdDTO.setEmployee(String.valueOf(opd.getEmployee().getId()));
 
             commonResponse.setPayload(Collections.singletonList(opdDTO));
             commonResponse.setStatus(true);

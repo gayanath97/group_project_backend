@@ -65,6 +65,7 @@ public class RrBillService {
 
             rrBillRepository.save(rrBill);
             commonResponse.setStatus(true);
+          //  commonResponse.setPayload(Collections.singletonList(rrBill));
 
         }catch (Exception e){
             LOGGER.error("/**************** Exception in RrBillService -> saveRrBill()" + e);
@@ -98,6 +99,7 @@ public class RrBillService {
 
             rrBillRepository.save(rrBill);
             commonResponse.setStatus(true);
+
 
         }catch (Exception e){
             LOGGER.error("/**************** Exception in RrBillService -> updateRrBill()" + e);

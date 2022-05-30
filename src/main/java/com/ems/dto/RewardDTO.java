@@ -19,5 +19,5 @@ public class RewardDTO {
     private String employee;
 
 
-    private CommonStatus statuss;
+   // private CommonStatus statuss;
 }

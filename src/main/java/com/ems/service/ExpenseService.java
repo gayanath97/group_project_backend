@@ -70,6 +70,7 @@ public class ExpenseService {
             expense.setBillability(expenseDTO.getBillability());
 
             expense.setSta_tus("pending");
+            expense.setEmployee(employeeService.findById(expenseDTO.getEmployee()));
 
           //  expense.setEmployeeExpenses(employeeExpenseService.castToEmployeeExpenses(expenseDTO.getEmployeeExpenses()));
            // expense.setExpenseBills(expenseBillService.castExpenseBillDTOSIntoExpenseBills(expenseDTO.getExpenseBills()));
@@ -109,6 +110,8 @@ public class ExpenseService {
             expense.setBillability(expenseDTO.getBillability());
 
             expense.setSta_tus("pending");
+
+            expense.setEmployee(employeeService.findById(expenseDTO.getEmployee()));
 
 
         //    expense.setEmployeeExpenses(employeeExpenseService.castToEmployeeExpenses(expenseDTO.getEmployeeExpenses()));
@@ -191,7 +194,21 @@ public class ExpenseService {
         List<ExpenseDTO> expenseDTOS = new ArrayList<>();
 
         for (Expense expense : expenses){
-            ExpenseDTO expenseDTO = modelMapper.map(expense,ExpenseDTO.class);
+           // ExpenseDTO expenseDTO = modelMapper.map(expense,ExpenseDTO.class);
+            ExpenseDTO expenseDTO = new ExpenseDTO();
+
+            expenseDTO.setId(String.valueOf(expense.getId()));
+            expenseDTO.setBuOrDept(expense.getBuOrDept());
+            expenseDTO.setProject(expense.getProject());
+            expenseDTO.setExtensionNo(String.valueOf(expense.getExtensionNo()));
+            expenseDTO.setCustomer(expense.getCustomer());
+            expenseDTO.setLocation(expense.getLocation());
+            expenseDTO.setBillability(expense.getBillability());
+            expenseDTO.setSta_tus("pending");
+
+            expenseDTO.setEmployee(String.valueOf(expense.getEmployee().getId()));
+
+
             expenseDTOS.add(expenseDTO);
         }
 
@@ -231,12 +248,25 @@ public class ExpenseService {
     public CommonResponse getById(String id) {
 
         CommonResponse commonResponse = new CommonResponse();
-        ExpenseDTO expenseDTO = null;
+        //ExpenseDTO expenseDTO = null;
 
         try {
 
             Expense expense = expenseRepository.findById(Long.valueOf(id)).get();
-            expenseDTO = modelMapper.map(expense,ExpenseDTO.class);
+            //expenseDTO = modelMapper.map(expense,ExpenseDTO.class);
+            ExpenseDTO expenseDTO = new ExpenseDTO();
+            expenseDTO.setId(String.valueOf(expense.getId()));
+            expenseDTO.setBuOrDept(expense.getBuOrDept());
+            expenseDTO.setProject(expense.getProject());
+            expenseDTO.setExtensionNo(String.valueOf(expense.getExtensionNo()));
+            expenseDTO.setCustomer(expense.getCustomer());
+            expenseDTO.setLocation(expense.getLocation());
+            expenseDTO.setBillability(expense.getBillability());
+            expenseDTO.setSta_tus("pending");
+
+            expenseDTO.setEmployee(String.valueOf(expense.getEmployee().getId()));
+
+
             commonResponse.setPayload(Collections.singletonList(expenseDTO));
             commonResponse.setStatus(true);
 

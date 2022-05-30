@@ -58,7 +58,7 @@ public class RewardService {
           //  Reward reward = moddelMapper.map(rewardDTO,Reward.class);
 
             Reward reward = new Reward();
-            reward.setRewardId(Long.valueOf(rewardDTO.getRewardId()));
+      //      reward.setRewardId(Long.valueOf(rewardDTO.getRewardId()));
             reward.setAmount(Double.parseDouble(rewardDTO.getAmount()));
             reward.setAddedDate(stringToDate(rewardDTO.getAddedDate()));
             reward.setExpireDate(stringToDate(rewardDTO.getExpireDate()));
@@ -91,7 +91,7 @@ public class RewardService {
 
             Reward reward = rewardRepository.getById(Long.valueOf(rewardId));
 
-            reward.setRewardId(Long.valueOf(rewardDTO.getRewardId()));
+    //        reward.setRewardId(Long.valueOf(rewardDTO.getRewardId()));
             reward.setAmount(Double.parseDouble(rewardDTO.getAmount()));
             reward.setAddedDate(stringToDate(rewardDTO.getAddedDate()));
             reward.setExpireDate(stringToDate(rewardDTO.getExpireDate()));
@@ -144,8 +144,10 @@ public class RewardService {
 
             Reward reward = rewardRepository.getById(Long.valueOf(rewardId));
 
-            reward.setStatuss(CommonStatus.DELETE);
-            rewardRepository.save(reward);
+           // reward.setStatuss(CommonStatus.DELETE);
+           // rewardRepository.save(reward);
+
+            rewardRepository.delete(reward);
 
             commonResponse.setStatus(true);
 
@@ -165,10 +167,10 @@ public class RewardService {
     public CommonResponse getAll() {
 
      CommonResponse commonResponse = new CommonResponse();
-        Set<RewardDTO> rewardDTOS = null;
+        List<RewardDTO> rewardDTOS = null;
 
      try {
-         Set<Reward> rewards = (Set<Reward>) rewardRepository.findAll();
+         List<Reward> rewards = rewardRepository.findAll();
          rewardDTOS = castRewardsIntoRewardDTOS(rewards);
          commonResponse.setPayload(Collections.singletonList(rewardDTOS));
          commonResponse.setStatus(true);
@@ -188,12 +190,22 @@ public class RewardService {
      * @param rewards
      * @return
      */
-    private Set<RewardDTO> castRewardsIntoRewardDTOS(Set<Reward> rewards) {
+    private List<RewardDTO> castRewardsIntoRewardDTOS(List<Reward> rewards) {
 
-        Set<RewardDTO> rewardDTOS = new HashSet<>();
+        List<RewardDTO> rewardDTOS = new ArrayList<>();
 
         for(Reward reward : rewards){
-            RewardDTO rewardDTO = moddelMapper.map(reward,RewardDTO.class);
+           // RewardDTO rewardDTO = moddelMapper.map(reward,RewardDTO.class);
+
+            RewardDTO rewardDTO = new RewardDTO();
+
+            rewardDTO.setRewardId(String.valueOf(reward.getRewardId()));
+            rewardDTO.setAmount(String.valueOf(reward.getAmount()));
+            rewardDTO.setAddedDate(DateTostring(reward.getAddedDate()));
+            rewardDTO.setExpireDate(DateTostring(reward.getExpireDate()));
+
+            rewardDTO.setEmployee(String.valueOf(reward.getEmployee().getId()));
+
             rewardDTOS.add(rewardDTO);
         }
 
@@ -232,11 +244,22 @@ public class RewardService {
     public CommonResponse getById(String rewardId) {
 
         CommonResponse commonResponse = new CommonResponse();
-        RewardDTO rewardDTO = null;
+        //RewardDTO rewardDTO = null;
         try {
 
             Reward reward = rewardRepository.findById(Long.valueOf(rewardId)).get();
-            rewardDTO = moddelMapper.map(reward,RewardDTO.class);
+           // rewardDTO = moddelMapper.map(reward,RewardDTO.class);
+
+            RewardDTO rewardDTO = new RewardDTO();
+
+            rewardDTO.setRewardId(String.valueOf(reward.getRewardId()));
+            rewardDTO.setAmount(String.valueOf(reward.getAmount()));
+            rewardDTO.setAddedDate(DateTostring(reward.getAddedDate()));
+            rewardDTO.setExpireDate(DateTostring(reward.getExpireDate()));
+
+            rewardDTO.setEmployee(String.valueOf(reward.getEmployee().getId()));
+
+
             commonResponse.setPayload(Collections.singletonList(rewardDTO));
             commonResponse.setStatus(true);
 

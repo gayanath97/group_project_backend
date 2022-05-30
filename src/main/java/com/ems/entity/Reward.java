@@ -30,11 +30,11 @@ public class Reward {
     private Date addedDate;
 
     @ManyToOne
-    @JoinColumn(name = "employee_employee_code")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @Enumerated
-    private CommonStatus statuss;
+//    @Enumerated
+//    private CommonStatus statuss;
 
 
 }

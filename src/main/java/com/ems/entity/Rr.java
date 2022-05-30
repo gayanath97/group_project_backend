@@ -28,6 +28,10 @@ public class Rr {
     @OneToMany(mappedBy = "rr")
     private Set<RrBill> rrBills;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
 
 //    @OneToMany
 //    private Set<EmployeeRr> employeeRrs;

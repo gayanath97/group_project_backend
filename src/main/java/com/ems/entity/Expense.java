@@ -37,6 +37,10 @@ public class Expense {
     @OneToMany(mappedBy = "expense")
     Set<ExpenseBill> expenseBills;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
 //    @OneToMany
 //    private Set<EmployeeExpense> employeeExpenses;
 

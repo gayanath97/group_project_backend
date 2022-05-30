@@ -29,6 +29,10 @@ public class Opd {
 
     private String sta_tus;
 
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
 //    @OneToMany
 //    private Set<OpdBill> opdBills;
 

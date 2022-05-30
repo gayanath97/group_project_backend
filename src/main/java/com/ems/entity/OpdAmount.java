@@ -25,10 +25,10 @@ public class OpdAmount {
     private Date expireDate;
 
     @ManyToOne
-    @JoinColumn(name = "employee_code")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @Enumerated
-    private CommonStatus statuss;
+//    @Enumerated
+//    private CommonStatus statuss;
 
 }

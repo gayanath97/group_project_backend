@@ -25,6 +25,8 @@ public class ExpenseDTO {
 
     private String sta_tus;
 
+    private String employee;
+
 //    private String employee;
 //    private Set<ExpenseBillDTO> expenseBills;
 //

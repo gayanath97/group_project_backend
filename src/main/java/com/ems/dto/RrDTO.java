@@ -21,6 +21,8 @@ public class RrDTO {
     private String location;
     private String sta_tus;
 
+    private String employee;
+
 
 
 //    private Set<RrBillDTO> rrBills;

@@ -126,9 +126,9 @@ public class OpdAmountService {
 
             OpdAmount opdAmount = opdAmountRepository.getById(Long.valueOf(id));
 
-            opdAmount.setStatuss(CommonStatus.DELETE);
-            opdAmountRepository.save(opdAmount);
-
+           // opdAmount.setStatuss(CommonStatus.DELETE);
+           // opdAmountRepository.save(opdAmount);
+              opdAmountRepository.delete(opdAmount);
             commonResponse.setStatus(true);
 
         }catch (Exception e){
@@ -153,6 +153,7 @@ public class OpdAmountService {
         try {
 
             List<OpdAmount> opdAmounts = opdAmountRepository.findAll();
+
             opdAmountDTOS = castopdAmountsIntoOpdAmountdDTOS(opdAmounts);
 
             commonResponse.setPayload(Collections.singletonList(opdAmountDTOS));
@@ -180,8 +181,15 @@ public class OpdAmountService {
 
         for(OpdAmount opdAmount : opdAmounts){
 
-            OpdAmountDTO opdAmountDTO;
-            opdAmountDTO = modelMapper.map(opdAmount,OpdAmountDTO.class);
+
+            //opdAmountDTO = modelMapper.map(opdAmount,OpdAmountDTO.class);
+            OpdAmountDTO opdAmountDTO = new OpdAmountDTO();
+
+            opdAmountDTO.setId(String.valueOf(opdAmount.getId()));
+            opdAmountDTO.setAmount(String.valueOf(opdAmount.getAmount()));
+            opdAmountDTO.setExpireDate(rewardService.DateTostring(opdAmount.getExpireDate()));
+            opdAmountDTO.setEmployee(String.valueOf(opdAmount.getEmployee().getId()));
+
             opdAmountDTOS.add(opdAmountDTO);
 
         }
@@ -221,12 +229,20 @@ public class OpdAmountService {
     public CommonResponse getById(String id) {
 
         CommonResponse commonResponse = new CommonResponse();
-        OpdAmountDTO opdAmountDTO =null;
+       // OpdAmountDTO opdAmountDTO =null;
 
         try {
 
             OpdAmount opdAmount = opdAmountRepository.findById(Long.valueOf(id)).get();
-            opdAmountDTO =modelMapper.map(opdAmount,OpdAmountDTO.class);
+            //opdAmountDTO =modelMapper.map(opdAmount,OpdAmountDTO.class);
+
+            OpdAmountDTO opdAmountDTO = new OpdAmountDTO();
+
+            opdAmountDTO.setId(String.valueOf(opdAmount.getId()));
+            opdAmountDTO.setAmount(String.valueOf(opdAmount.getAmount()));
+            opdAmountDTO.setExpireDate(rewardService.DateTostring(opdAmount.getExpireDate()));
+            opdAmountDTO.setEmployee(String.valueOf(opdAmount.getEmployee().getId()));
+
             commonResponse.setPayload(Collections.singletonList(opdAmountDTO));
             commonResponse.setStatus(true);
 
