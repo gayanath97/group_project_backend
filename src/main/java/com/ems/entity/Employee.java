@@ -14,14 +14,16 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String email;
+
 
     @Column
     private String firstName;
 
     @Column
     private String lastName;
+
+    @Column
+    private String email;
 
     @Column
     private String userName;
@@ -86,12 +88,13 @@ public class Employee {
 
     }
 
-    public Employee( String email, String firstName, String lastName, String userName, String password, String phoneNumber) {
+    public Employee( String firstName, String lastName,String email,  String userName, String password, String phoneNumber) {
         super();
 
-        this.email = email;
+
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.userName = userName;
         this.password = password;
         this.phoneNumber = phoneNumber;
