@@ -65,7 +65,7 @@ public class RrService {
             rr.setLocation(rrDTO.getLocation());
         //    rr.setSta_tus(rrDTO.getSta_tus());
 
-            rr.setSta_tus("Pending");
+            rr.setSta_tus("pending");
 
             rr.setEmployee(employeeService.findById(rrDTO.getEmployee()));
 
@@ -108,7 +108,7 @@ public class RrService {
             rr.setCustomer(rrDTO.getCustomer());
             rr.setLocation(rrDTO.getLocation());
           //  rr.setSta_tus(rrDTO.getSta_tus());
-            rr.setSta_tus("Pending");
+            rr.setSta_tus("pending");
 
             rr.setEmployee(employeeService.findById(rrDTO.getEmployee()));
 
@@ -203,7 +203,7 @@ public class RrService {
             rrDTO.setCustomer(rr.getCustomer());
             rrDTO.setExtensionNo(String.valueOf(rr.getExtensionNo()));
             rrDTO.setLocation(rr.getLocation());
-            rrDTO.setSta_tus("Pending");
+            rrDTO.setSta_tus(rr.getSta_tus());
             rrDTO.setEmployee(String.valueOf(rr.getEmployee().getId()));
 
 
@@ -265,7 +265,7 @@ public class RrService {
             rrDTO.setCustomer(rr.getCustomer());
             rrDTO.setExtensionNo(String.valueOf(rr.getExtensionNo()));
             rrDTO.setLocation(rr.getLocation());
-            rrDTO.setSta_tus("Pending");
+            rrDTO.setSta_tus("pending");
             rrDTO.setEmployee(String.valueOf(rr.getEmployee().getId()));
 
 

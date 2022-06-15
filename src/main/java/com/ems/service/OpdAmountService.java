@@ -61,7 +61,7 @@ public class OpdAmountService {
             OpdAmount opdAmount = new OpdAmount();
            // EmployeeDTO employeeDTO = new EmployeeDTO();
 
-            opdAmount.setId(Long.valueOf(opdAmountDTO.getId()));
+            //opdAmount.setId(Long.valueOf(opdAmountDTO.getId()));
             opdAmount.setAmount(Double.valueOf(opdAmountDTO.getAmount()));
             opdAmount.setExpireDate(rewardService.stringToDate(opdAmountDTO.getExpireDate()));
             opdAmount.setEmployee(employeeService.findById(opdAmountDTO.getEmployee()));
@@ -93,7 +93,7 @@ public class OpdAmountService {
 
             OpdAmount opdAmount = opdAmountRepository.getById(Long.valueOf(id));
 
-            opdAmount.setId(Long.valueOf(opdAmountDTO.getId()));
+           // opdAmount.setId(Long.valueOf(opdAmountDTO.getId()));
             opdAmount.setAmount(Double.valueOf(opdAmountDTO.getAmount()));
             opdAmount.setExpireDate(rewardService.stringToDate(opdAmountDTO.getExpireDate()));
             opdAmount.setEmployee(employeeService.findById(opdAmountDTO.getEmployee()));

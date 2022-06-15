@@ -1,14 +1,24 @@
-//package com.ems.dto;
-//
-//
-//public class EmployeeDTO {
-//
-//    private String email;
-//    private String firstName;
-//    private String lastName;
-//    private String userName;
-//    private String password;
-//    private String phoneNumber;
+package com.ems.dto;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+public class EmployeeDTO {
+
+    private String id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String userName;
+    private String phoneNumber;
+}
 //    private String type;
 //
 //

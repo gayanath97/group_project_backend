@@ -2,9 +2,11 @@ package com.ems.service;
 
 import com.ems.constant.ERole;
 //import com.ems.dto.EmployeeDTO;
+import com.ems.dto.EmployeeDTO;
 import com.ems.dto.SignupRequest;
 import com.ems.entity.Employee;
 import com.ems.entity.Role;
+import com.ems.entity.User;
 import com.ems.repository.EmployeeRepository;
 import com.ems.repository.RoleRepository;
 import com.ems.util.CommonResponse;
@@ -75,6 +77,7 @@ public class EmployeeService {
         try {
 
             Employee employee = new Employee();
+
 
             employee.setEmail(signUpRequest.getEmail());
             employee.setFirstName(signUpRequest.getFirstName());
@@ -238,20 +241,35 @@ public class EmployeeService {
      *
      * @return
      */
+//    public CommonResponse getAll() {
+//       CommonResponse commonResponse = new CommonResponse();
+//        List<SignupRequest> signupRequests = null;
+//
+//       try {
+//           List<Employee> employees = employeeRepository.findAll();
+//           signupRequests = castEmployeesIntoEmployeeDTOS(employees);
+//           commonResponse.setPayload(Collections.singletonList(signupRequests));
+//           commonResponse.setStatus(true);
+//
+//       }catch (Exception e){
+//           LOGGER.error("/**************** Exception in EmployeeService -> getAll()" + e);
+//       }
+//     return commonResponse;
+//    }
     public CommonResponse getAll() {
-       CommonResponse commonResponse = new CommonResponse();
-        List<SignupRequest> signupRequests = null;
+        CommonResponse commonResponse = new CommonResponse();
+        List<EmployeeDTO> employeeDTOS = null;
 
-       try {
-           List<Employee> employees = employeeRepository.findAll();
-           signupRequests = castEmployeesIntoEmployeeDTOS(employees);
-           commonResponse.setPayload(Collections.singletonList(signupRequests));
-           commonResponse.setStatus(true);
+        try {
+            List<Employee> employees = employeeRepository.findAll();
+            employeeDTOS = castEmployeesIntoEmployeeDTOS(employees);
+            commonResponse.setPayload(Collections.singletonList(employeeDTOS));
+            commonResponse.setStatus(true);
 
-       }catch (Exception e){
-           LOGGER.error("/**************** Exception in EmployeeService -> getAll()" + e);
-       }
-     return commonResponse;
+        }catch (Exception e){
+            LOGGER.error("/**************** Exception in EmployeeService -> getAll()" + e);
+        }
+        return commonResponse;
     }
 
     /**
@@ -262,15 +280,29 @@ public class EmployeeService {
      * @param employees
      * @return List<EmployeeDTO>
      */
-    private List<SignupRequest> castEmployeesIntoEmployeeDTOS(List<Employee> employees) {
+//    private List<SignupRequest> castEmployeesIntoEmployeeDTOS(List<Employee> employees) {
+//
+//        List<SignupRequest> employeeDTOS = new ArrayList<>();
+//
+//        for(Employee employee : employees){
+//
+//            SignupRequest signupRequest;
+//            signupRequest = modelMapper.map(employee,SignupRequest.class);
+//            employeeDTOS.add(signupRequest);
+//
+//        }
+//
+//        return employeeDTOS;
+//    }
+    private List<EmployeeDTO> castEmployeesIntoEmployeeDTOS(List<Employee> employees) {
 
-        List<SignupRequest> employeeDTOS = new ArrayList<>();
+        List<EmployeeDTO> employeeDTOS = new ArrayList<>();
 
         for(Employee employee : employees){
 
-            SignupRequest signupRequest;
-            signupRequest = modelMapper.map(employee,SignupRequest.class);
-            employeeDTOS.add(signupRequest);
+            EmployeeDTO employeeDTO;
+            employeeDTO = modelMapper.map(employee,EmployeeDTO.class);
+            employeeDTOS.add(employeeDTO);
 
         }
 
