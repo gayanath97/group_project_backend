@@ -13,5 +13,5 @@ public class ManagerExpenseDTO {
 
     private String expenseId;
     private String sta_tus;
-    
+
 }

@@ -197,7 +197,7 @@ public class OpdService {
             opdDTO.setDate(rewardService.DateTostring(opd.getDate()));
             opdDTO.setAmount(String.valueOf(opd.getAmount()));
             opdDTO.setParticulars(opd.getParticulars());
-            opdDTO.setSta_tus("pending");
+            opdDTO.setSta_tus(opd.getSta_tus());
 
             opdDTO.setEmployee(String.valueOf(opd.getEmployee().getId()));
 
@@ -250,7 +250,7 @@ public class OpdService {
             opdDTO.setDate(rewardService.DateTostring(opd.getDate()));
             opdDTO.setAmount(String.valueOf(opd.getAmount()));
             opdDTO.setParticulars(opd.getParticulars());
-            opdDTO.setSta_tus("pending");
+            opdDTO.setSta_tus(opd.getSta_tus());
 
             opdDTO.setEmployee(String.valueOf(opd.getEmployee().getId()));
 

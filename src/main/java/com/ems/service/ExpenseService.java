@@ -204,7 +204,7 @@ public class ExpenseService {
             expenseDTO.setCustomer(expense.getCustomer());
             expenseDTO.setLocation(expense.getLocation());
             expenseDTO.setBillability(expense.getBillability());
-            expenseDTO.setSta_tus("pending");
+            expenseDTO.setSta_tus(expense.getSta_tus());
 
             expenseDTO.setEmployee(String.valueOf(expense.getEmployee().getId()));
 
@@ -262,7 +262,7 @@ public class ExpenseService {
             expenseDTO.setCustomer(expense.getCustomer());
             expenseDTO.setLocation(expense.getLocation());
             expenseDTO.setBillability(expense.getBillability());
-            expenseDTO.setSta_tus("pending");
+            expenseDTO.setSta_tus(expense.getSta_tus());
 
             expenseDTO.setEmployee(String.valueOf(expense.getEmployee().getId()));
 

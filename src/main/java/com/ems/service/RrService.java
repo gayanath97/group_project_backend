@@ -265,7 +265,7 @@ public class RrService {
             rrDTO.setCustomer(rr.getCustomer());
             rrDTO.setExtensionNo(String.valueOf(rr.getExtensionNo()));
             rrDTO.setLocation(rr.getLocation());
-            rrDTO.setSta_tus("pending");
+            rrDTO.setSta_tus(rr.getSta_tus());
             rrDTO.setEmployee(String.valueOf(rr.getEmployee().getId()));
 
 
