@@ -1,7 +1,6 @@
 package com.ems.service;
 
 import com.ems.util.CommonResponse;
-import com.ems.constant.CommonStatus;
 import com.ems.dto.RewardDTO;
 import com.ems.entity.Reward;
 import com.ems.repository.RewardRepository;
@@ -281,6 +280,8 @@ public class RewardService {
     public Reward findById(String rewardId){
         return rewardRepository.findById(Long.valueOf(rewardId)).get();
     }
+
+
 
 
 

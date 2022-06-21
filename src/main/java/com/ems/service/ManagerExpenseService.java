@@ -8,7 +8,7 @@ import com.ems.util.CommonResponse;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ManagerExpenseService {
+public class ManagerExpenseService  {
 
     private ExpenseService expenseService;
     private ExpenseRepository expenseRepository;

@@ -35,6 +35,7 @@ public class RewardController {
 
     @GetMapping("/")
     public CommonResponse getAll(){
+
         return rewardService.getAll();
     }
 

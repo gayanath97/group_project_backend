@@ -36,5 +36,4 @@ public class Reward {
 //    @Enumerated
 //    private CommonStatus statuss;
 
-
 }
